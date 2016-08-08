@@ -1,0 +1,44 @@
+﻿@model BeerApplication.Models.Brewery
+@{
+    ViewBag.Title = "GetBrewery";
+}
+
+<h2>GetBrewery</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Current Page
+        </th>
+        <th>
+            Number Of Pages
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalResults)
+        </th>
+        <th>Data</th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.currentPage)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.numberOfPages)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.totalResults)
+        </td>
+        <td>
+            @foreach (var item in Model.data)
+            {
+
+                <p>ID = @item.id Name = @item.name City = @Model.GetLocation(item.id).Result</p>
+            }
+        </td>
+    </tr>
+
+</table>
